@@ -30,7 +30,7 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         break;
 
-        // Implement a redirect
+        // Implement a redirect from get-in-touch to contacts
         case '/get-in-touch':
         res.statusCode = 301;
         res.setHeader('Location', '/contacts');
