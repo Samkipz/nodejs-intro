@@ -1,25 +1,32 @@
-
-//You can load an ES module by setting "type": "module" in the package.json
-//This will enable you to use "import express from express"
-import express from "express";
-import bodyParser from 'body-parser';
-import {v4 as uuid} from "uuid";
-import routeUsers from "./routes/users.js";
-
-
-
-// create app and listen on port 3000
+/**-----------------IMPORTS--------------------------- */
+const express = require("express");
 const app = express();
-app.listen(3000, () =>{
-    console.log("Server iko poa inarun port 3000");
-})
+const path = require("path");
+const routeUsers = require("./routes/users.js");
+const fs = require("fs")
+const PORT = process.env.PORT || 3000;
 
-
+/** --------------- MIDDLEWARES --------------------- */
+// Use built-in middleware for json
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 //set route
 app.use('/users', routeUsers);
 
+//Path to static files
+app.use(express.static(path.join(__dirname, '/public')));
+
+/** ------------------ SET ENGINE --------------------- */
+app.set("view engine", "ejs");
+
 //Request to homepage
-app.get('/', (req, res)=>{
-    console.log("request handshake okay!");
-    res.send("Request received");
+app.get('/', (req, res) => {
+    console.log(`${req.method} ${req.url}`)
+    res.render('index.ejs');
 });
+
+app.use('/*', (req, res) => {
+    console.log(`${req.method} ${req.url}`)
+    res.render('404.ejs');
+})
+app.listen(PORT, () => console.log(`Server iko poa inarun port ${PORT}`));

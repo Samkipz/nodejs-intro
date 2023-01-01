@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title> NodeJS API</title>
+</head>
+
+<body>
+    <div class="homepage">
+        <div class="welcome-title">
+            <h1> A User's CRUD API </h1>
+        </div>
+
+        <div class="text-zone">
+            <p>
+                Hello there, thanks for stoping by.
+            </p>
+            <p>
+                This here is a simple express API playground that performs CRUD operations on
+                users data. The required details are firstname, lastname and gender
+            </p>
+            <p> To interact with this platform, you will need an API tool such as POSTMAN or Thunder Client</p>
+        </div>
+
+
+        <h3>Sample Get request to get all users in the database</h3>
+        <p class="code">
+            localhost:3000/users
+        </p>
+
+        <h3>Sample Post request to create new user in the database</h3>
+        <p class="code">
+            POST: localhost:3000/users <br>
+
+            {<br>
+            "firstName": "Jack", <br>
+            "lastName": "Kipz", <br>
+            "gender": "male"<br>
+            }
+        </p>
+        <h3>Sample PUT request to update a user in the database</h3>
+        <p class="code">
+            PUT: localhost:3000/users <br>
+            {
+            "id":1,
+            "firstName": "Big",
+            "lastName": "King",
+            "gender": "Male"
+            }
+        </p>
+        <h3>Sample delete request to remove a user from the database</h3>
+        <p class="code">
+            DELETE: localhost:3000/users <br>
+            {
+            "id": 1
+            }
+        </p>
+        <h3>Sample fetch request to fetch a specific user from the database</h3>
+        <p class="code">
+            GET: localhost:3000/users/2
+        </p>
+    </div>
+</body>
+
+</html>
